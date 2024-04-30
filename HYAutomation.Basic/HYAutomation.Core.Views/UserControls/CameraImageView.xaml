@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="HYAutomation.Core.Views.UserControls.CameraImageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HYAutomation.Core.Views.UserControls"
+          xmlns:vc="clr-namespace:HYAutomation.BaseView.ValueConverters;assembly=HYAutomation.BaseView"
+                   xmlns:BaseControl="clr-namespace:HYAutomation.BaseView.CustomControls;assembly=HYAutomation.BaseView"
+             xmlns:global="clr-namespace:HYAutomation.Core.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HYAutomation.BaseView;component/Themes/GeneralStyle.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="AliceBlue"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="tb">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource Iconfont}"/>
+                <Setter Property="Text" Value="{StaticResource OK}"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding CameraRetIsOK}" Value="True">
+                        <Setter Property="TextBlock.Foreground" Value="Green"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding CameraRetIsOK}" Value="False">
+                        <Setter Property="TextBlock.Text" Value="{StaticResource NG}"/>
+                        <Setter Property="TextBlock.Foreground" Value="Red"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="retTB">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource Iconfont}"/>
+                <Setter Property="Text" Value="{StaticResource OK}"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding RetIsOk}" Value="True">
+                        <Setter Property="TextBlock.Foreground" Value="Green"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding RetIsOk}" Value="False">
+                        <Setter Property="TextBlock.Text" Value="{StaticResource NG}"/>
+                        <Setter Property="TextBlock.Foreground" Value="Red"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <ItemsControl ItemsSource="{Binding CameraDatas}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="{Binding ImgColumns, Source={x:Static global:GlobalManager.Instance}}" Rows="{Binding ImgRows, Source={x:Static global:GlobalManager.Instance}}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <BaseControl:CoverBorder Margin="2" >
+                        <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                            <!--<Image Source="{Binding CameraImage}" Stretch="Fill"/>-->
+                            <local:DetectItemManageControl IsCanEdit="False" TypeImageSource="{Binding CameraImage}" DetectionItems="{Binding DetectItems}"/>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <Label Content="{Binding CameraDesc}" Foreground="#efefef"/>
+                                    <TextBlock Style="{StaticResource tb}" FontSize="20"/>
+                                </StackPanel>
+                                <ItemsControl VerticalAlignment="Top" ItemsSource="{Binding DetectItems}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="1"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Background="Black" HorizontalAlignment="Left">
+                                                <Label Content="{Binding DetectItemConfig.DetectItemDesc}" Foreground="{Binding DetectItemConfig.MarkerBorderBrushStr,Converter={vc:StringToBrushConverter}}" FontSize="16"/>
+                                                <TextBlock x:Name="ret" Style="{StaticResource retTB}"/>
+                                                <Button Command="{Binding ShowResultCmd}" Style="{StaticResource ImgButton}" MaxWidth="130">
+                                                    <TextBlock Text="{Binding Result}" ToolTip="{Binding Result}" TextTrimming="CharacterEllipsis" Foreground="{Binding DetectItemConfig.MarkerBorderBrushStr,Converter={vc:StringToBrushConverter}}" FontSize="14"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Grid>
+                    </BaseControl:CoverBorder>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

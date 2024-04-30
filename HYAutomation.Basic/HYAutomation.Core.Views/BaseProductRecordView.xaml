@@ -1,0 +1,217 @@
+﻿<Window x:Class="HYAutomation.Core.Views.BaseProductRecordView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:BaseControl="clr-namespace:HYAutomation.BaseView.CustomControls;assembly=HYAutomation.BaseView"
+        xmlns:BaseUC="clr-namespace:HYAutomation.BaseView.UserControls;assembly=HYAutomation.BaseView"
+        xmlns:CoreUC="clr-namespace:HYAutomation.Core.Views.UserControls"
+          xmlns:DP="clr-namespace:HYWindowUtils.WPF.UserControls.DateTimePicker;assembly=HYWindowUtils.WPF.UserControls"
+        mc:Ignorable="d"
+        Title="BaseProductRecordView" WindowStyle="None" ResizeMode="NoResize" SnapsToDevicePixels="True" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterOwner" Foreground="#efefef" FontSize="18">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HYAutomation.BaseView;component/Themes/GeneralStyle.xaml"/>
+    </Window.Resources>
+    <Viewbox>
+        <Grid Height="900" Width="1600" >
+            <Border Background="{DynamicResource WindowBackgroundBrush}" CornerRadius="30" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="5" Direction="45" ShadowDepth="5" Color="Black"/>
+                </Border.Effect>
+            </Border>
+            <Border CornerRadius="30" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="bd_top" CornerRadius="30 30 0 0" Background="{StaticResource WindowTitleBackgroundBrush}"/>
+                    <Grid x:Name="Grid_top" MouseMove="Grid_top_MouseMove" Background="{StaticResource WindowTitleBackgroundBrush}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1041*"/>
+                            <ColumnDefinition Width="539*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=bd_top}"/>
+                        </Grid.OpacityMask>
+                        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                            <Image Source="{StaticResource imgLogo}" HorizontalAlignment="Left" />
+                            <Label Content="生产记录" FontSize="30" Foreground="#efefef" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <BaseControl:HYButton HorizontalAlignment="Right" Command="{Binding CloseCmd}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"  Style="{StaticResource HYButton}" FontFamily="{StaticResource Iconfont}" Content="{StaticResource Close}" FontSize="50" Height="60" Width="100" Foreground="#efefef" Background="Transparent" MouseOverBrush="DarkRed"  PressedBrush="Red" Grid.Column="1" />
+                        <Rectangle VerticalAlignment="Bottom" Height="1" Fill="{StaticResource WindowTitleSpliterBrush}" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <BaseControl:HYContentControl TitleContent="生产列表">
+                                <DockPanel>
+                                    <Grid DockPanel.Dock="Top" VerticalAlignment="Top" Margin="3" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                                            <Label Content="条码" Foreground="#efefef"/>
+                                            <TextBox Width="250" Text="{Binding Barcode}" Height="34" Margin="0,0,0,-0.4" VerticalAlignment="Bottom"/>
+                                            <Label Content="型号编号" Foreground="#efefef"/>
+                                            <TextBox Width="180" Text="{Binding TypeCode}"/>
+                                            <Label Content="型号名称" Foreground="#efefef"/>
+                                            <TextBox Width="180" Text="{Binding TypeName}"/>
+                                            <Label Content="结果" Foreground="#efefef"/>
+                                            <ComboBox  Text="{Binding Filter}">
+                                                <ComboBoxItem Content="全部" IsSelected="True"/>
+                                                <ComboBoxItem Content="NG"/>
+                                                <ComboBoxItem Content="OK"/>
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="TextBox"/>
+                                            </StackPanel.Resources>
+                                            <Label Content="开始时间" Foreground="#efefef" VerticalAlignment="Center"/>
+                                            <DP:DateTimePicker BorderBrush="Gray" Height="40" Width="220" FontSize="18"  DateTimeStr="{Binding StartDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                            <Label Content="----" Foreground="#efefef" VerticalAlignment="Center"/>
+                                            <Label Content="结束时间" Foreground="#efefef" VerticalAlignment="Center"/>
+                                            <DP:DateTimePicker BorderBrush="Gray" Height="40" Width="220" FontSize="18"  DateTimeStr="{Binding EndDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></DP:DateTimePicker>
+                                            <Label Content="检测条目" Foreground="#efefef" VerticalAlignment="Center"/>
+                                            <ComboBox ItemsSource="{Binding DetectItemConfigs}" DisplayMemberPath="DetectItemDesc" SelectedItem="{Binding SelectedDetectItem}" SelectedIndex="0"  MinWidth="200" VerticalAlignment="Center"/>
+                                            <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource ImgButton}" Content="{StaticResource Search}" FontSize="50" Foreground="#efefef" Command="{Binding SearchCmd}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <GroupBox Header="查询结果" BorderBrush="Green" Margin="3">
+                                        <DockPanel>
+                                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" DataContext="{Binding ProductStatisticsInfo}">
+                                                <Label Content="总数" Foreground="#efefef"/>
+                                                <Label Content="{Binding TotalOutputs}" Foreground="#efefef" Margin="5 0"/>
+                                                <Label Content="合格数量" Foreground="#efefef"/>
+                                                <Label Content="{Binding OkOutputs}" Foreground="#efefef" Margin="5 0"/>
+                                                <Label Content="NG数量" Foreground="#efefef"/>
+                                                <Label Content="{Binding NoOutputs}" Foreground="#efefef" Margin="5 0"/>
+                                                <Label Content="合格率" Foreground="#efefef"/>
+                                                <Label Content="{Binding PercentOfOK}" Foreground="#efefef" Margin="5 0"/>
+                                            </StackPanel>
+                                            <DataGrid ItemsSource="{Binding ProductLogs}" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" SelectedItem="{Binding CurrentProduct}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" HorizontalScrollBarVisibility="Auto" BorderBrush="#7FDBFF" BorderThickness="1">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="时间" Binding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" IsReadOnly="True"/>
+                                                    <DataGridTemplateColumn Header="结果" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock>
+                                                                    <TextBlock.Style>
+                                                                        <Style TargetType="TextBlock">
+                                                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                            <Setter Property="FontFamily" Value="{StaticResource Iconfont}"/>
+                                                                            <Setter Property="FontSize" Value="18"/>
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding IsOK}" Value="True">
+                                                                                    <Setter Property="TextBlock.Text" Value="{StaticResource OK}"/>
+                                                                                    <Setter Property="TextBlock.Foreground" Value="Green"/>
+                                                                                </DataTrigger>
+                                                                                <DataTrigger Binding="{Binding IsOK}" Value="False">
+                                                                                    <Setter Property="TextBlock.Text" Value="{StaticResource NG}"/>
+                                                                                    <Setter Property="TextBlock.Foreground" Value="Red"/>
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </TextBlock.Style>
+                                                                </TextBlock>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn Header="文件">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button Style="{StaticResource ImgButton}" Content="{StaticResource OpenFile}" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.OpenFolderCmd}"
+                                                                CommandParameter="{Binding}" FontFamily="{StaticResource Iconfont}" Foreground="#ffa800" FontSize="25" HorizontalAlignment="Right"/>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTextColumn Header="备注" Binding="{Binding WorkLog,Mode=OneWay}"/>
+                                                    <DataGridTemplateColumn Header="条码">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding Barcode}" ToolTip="{Binding Barcode}" Background="Transparent"  Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=Foreground}" FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=FontSize}" Style="{x:Null}"/>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn Header="型号名称" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding TypeName}" Background="Transparent" ToolTip="{Binding TypeName}"  Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=Foreground}" FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=FontSize}" Style="{x:Null}"/>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </DockPanel>
+                                    </GroupBox>
+                                </DockPanel>
+                            </BaseControl:HYContentControl>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <BaseControl:HYContentControl TitleContent="详细信息" >
+                                <DockPanel DataContext="{Binding CurrentProduct}">
+                                    <Grid DockPanel.Dock="Top">
+                                        <Grid.Resources>
+                                            <Style TargetType="{x:Type Label}">
+                                                <Setter Property="FontSize" Value="18"/>
+                                                <Setter Property="Foreground" Value="#efefef"/>
+                                            </Style>
+                                            <Style  TargetType="{x:Type TextBox}" BasedOn="{StaticResource HYTextBox}">
+                                                <Setter Property="IsReadOnly" Value="True"/>
+                                            </Style>
+                                            <Style TargetType="{x:Type DockPanel}">
+                                                <Setter Property="Margin" Value="0 5"/>
+                                            </Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="FontFamily" Value="{StaticResource Iconfont}"/>
+                                                <Setter Property="Text" Value="{StaticResource OK}"/>
+                                                <Setter Property="Foreground" Value="Gray"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsOK}" Value="True">
+                                                        <Setter Property="TextBlock.Foreground" Value="Green"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsOK}" Value="False">
+                                                        <Setter Property="TextBlock.Text" Value="{StaticResource NG}"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="Red"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <UniformGrid Columns="1">
+                                            <DockPanel>
+                                                <Label Content="产品条码:"/>
+                                                <TextBox Text="{Binding Barcode}"/>
+                                            </DockPanel>
+                                            <DockPanel>
+                                                <Label Content="型号编码:"/>
+                                                <TextBox Text="{Binding TypeCode}"/>
+                                            </DockPanel>
+                                            <DockPanel>
+                                                <Label Content="型号名称:"/>
+                                                <TextBox Text="{Binding TypeName}"/>
+                                            </DockPanel>
+                                        </UniformGrid>
+                                        <TextBlock Grid.Column="1" FontSize="80" Margin="5"/>
+                                    </Grid>
+                                    <CoreUC:CameraImageView Grid.Row="2"/>
+                                </DockPanel>
+                            </BaseControl:HYContentControl>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Viewbox>
+</Window>

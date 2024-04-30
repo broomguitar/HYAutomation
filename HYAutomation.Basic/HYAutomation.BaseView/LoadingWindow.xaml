@@ -1,0 +1,43 @@
+﻿<Window x:Class="HYAutomation.BaseView.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HYAutomation.BaseView"
+          xmlns:control="clr-namespace:HYAutomation.BaseView.CustomControls"
+        mc:Ignorable="d"
+          Title="LoadingWindow" WindowStartupLocation="CenterScreen" Background="Transparent" ShowInTaskbar="False" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HYAutomation.BaseView;component/Themes/GeneralStyle.xaml"/>
+    </Window.Resources>
+    <Viewbox>
+        <Grid Height="380" Width="380" Margin="5">
+            <Border CornerRadius="3">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8" ShadowDepth="0" Direction="270" Color="#B4B4B6"/>
+                </Border.Effect>
+            </Border>
+            <Border CornerRadius="3">
+                <Grid>
+                    <control:Arc x:Name="arc1" Width="150" Height="150" Rect="10,10,130,130" StartAngle="0" EndAngle="360" Stroke="{StaticResource WindowBackgroundBrush}" StrokeThickness="20" StrokeStartLineCap="Round"  StrokeEndLineCap="Round" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <control:Arc x:Name="arc2" Width="150" Height="150" Rect="10,10,130,130" StartAngle="0" EndAngle="20" StrokeThickness="18" StrokeStartLineCap="Round" StrokeEndLineCap="Round" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="Orange">
+                        <control:Arc.Effect>
+                            <DropShadowEffect BlurRadius="3" ShadowDepth="0" Color="#efefef"/>
+                        </control:Arc.Effect>
+                        <control:Arc.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation  Duration="0:0:2" From="0" To="720" AccelerationRatio="0.2" DecelerationRatio="0.8" RepeatBehavior="Forever" Storyboard.TargetProperty="StartAngle"/>
+                                        <DoubleAnimation  Duration="0:0:2" From="0" To="730" AccelerationRatio="0" DecelerationRatio="1" RepeatBehavior="Forever" Storyboard.TargetProperty="EndAngle"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </control:Arc.Triggers>
+                    </control:Arc>
+                    <TextBlock x:Name="tb" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="DarkOrange" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Viewbox>
+</Window>

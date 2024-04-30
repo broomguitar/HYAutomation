@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    >
+    <!--Logo-->
+    <BitmapImage x:Key="imgLogo" UriSource="pack://application:,,,/HYAutomation.BaseView;component/Resources/HYLogo.png"/>
+    <!--窗体标题栏颜色 #FF1F1E39-->
+    <LinearGradientBrush x:Key="WindowTitleBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FF1F1E39" Offset="0"/>
+            <GradientStop Color="#CC082E59" Offset="0.5"/>
+            <GradientStop Color="#FF1F1E39" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <!--窗体背景颜色-->
+        <LinearGradientBrush x:Key="WindowBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#E5041A3F" Offset="0"/>
+            <GradientStop Color="#CC082E59" Offset="0.25"/>
+            <GradientStop Color="#E5041A3F" Offset="0.5"/>
+            <GradientStop Color="#CC082E59" Offset="0.75"/>
+            <GradientStop Color="#E5041A3F" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <!--窗体分割线颜色-->
+    <LinearGradientBrush x:Key="WindowTitleSpliterBrush">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#ffaa00" Offset="0"/>
+            <GradientStop Color="Transparent" Offset="0.2"/>
+            <GradientStop Color="#ffaa00" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <!--文本颜色-->
+    <SolidColorBrush x:Key="TextForegroundBrush" Color="#efefef"/>
+</ResourceDictionary>

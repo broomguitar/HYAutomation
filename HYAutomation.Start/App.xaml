@@ -1,0 +1,8 @@
+﻿<Application x:Class="HYAutomation.Start.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HYAutomation.Start">
+    <Application.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HYAutomation.BaseView;component/Themes/GeneralStyle.xaml"/>
+    </Application.Resources>
+</Application>

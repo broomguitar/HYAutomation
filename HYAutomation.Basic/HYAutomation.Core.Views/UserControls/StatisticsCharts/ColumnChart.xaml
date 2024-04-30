@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="HYAutomation.Core.Views.UserControls.StatisticsCharts.ColumnChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HYAutomation.Core.Views.UserControls.StatisticsCharts"
+               xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="ForegroundLightBrush" Color="#efefef"/>
+        <SolidColorBrush x:Key="HYDarkBlueBrush" Color="#0c6991"/>
+    </UserControl.Resources>
+    <Grid>
+        <lvc:CartesianChart Series="{Binding ColunmSeriesCollection}"
+                            LegendLocation="Right" Foreground="{StaticResource ForegroundLightBrush}" FontSize="14">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Labels="{Binding ColumnXLabels}" Foreground="{StaticResource ForegroundLightBrush}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Foreground="{StaticResource ForegroundLightBrush}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.DataTooltip>
+                <lvc:DefaultTooltip BulletSize="10" Background="{StaticResource HYDarkBlueBrush}"></lvc:DefaultTooltip>
+            </lvc:CartesianChart.DataTooltip>
+        </lvc:CartesianChart>
+    </Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="HYAutomation.Core.Views.UserControls.ImageViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HYAutomation.Core.Views.UserControls"
+             xmlns:BaseControl="clr-namespace:HYAutomation.BaseView.CustomControls;assembly=HYAutomation.BaseView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HYAutomation.BaseView;component/Themes/GeneralStyle.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Cursor="SizeAll"
+     Focusable="False" x:Name="BackFrame">
+            <Grid x:Name="Grid" Background="#1C1C1C" PreviewMouseLeftButtonDown="Grid_PreviewMouseLeftButtonDown" PreviewMouseMove="Grid_PreviewMouseMove" PreviewMouseLeftButtonUp="Grid_PreviewMouseLeftButtonUp" PreviewMouseWheel="Grid_PreviewMouseWheel">
+                <Image x:Name="img" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=ImageSource}" Stretch="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=Stretch}">
+                    <Image.RenderTransform>
+                        <TransformGroup x:Name="group" >
+                            <ScaleTransform x:Name="scaleTransform"/>
+                            <TranslateTransform x:Name="translateTransform"/>
+                            <RotateTransform x:Name="rotateTransform"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+        </ScrollViewer>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
+            <WrapPanel.Resources>
+                <Style TargetType="BaseControl:HYButton" BasedOn="{StaticResource HYButton}">
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                    <Setter Property="MouseOverBrush" Value="DarkSlateGray"/>
+                    <Setter Property="PressedBrush" Value="Black"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="CornerRadius" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=ActualWidth}"/>
+                    <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=ActualWidth}"/>
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </WrapPanel.Resources>
+            <BaseControl:HYButton x:Name="rotate" Content=" 旋 转 " Click="rotate_Click"/>
+            <BaseControl:HYButton x:Name="enlarge" Content=" 放 大 " Click="enlarge_Click"/>
+            <BaseControl:HYButton x:Name="shrink" Content=" 缩 小 " Click="shrink_Click"/>
+            <BaseControl:HYButton x:Name="resotre" Content=" 还 原 " Click="resotre_Click"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

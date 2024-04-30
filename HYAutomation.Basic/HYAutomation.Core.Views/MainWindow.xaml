@@ -1,0 +1,147 @@
+﻿<Window x:Class="HYAutomation.Core.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HYAutomation.Core.Views"
+        xmlns:CoreUC="clr-namespace:HYAutomation.Core.Views.UserControls"
+        xmlns:BaseVC="clr-namespace:HYAutomation.BaseView.ValueConverters;assembly=HYAutomation.BaseView"
+        xmlns:BaseControl="clr-namespace:HYAutomation.BaseView.CustomControls;assembly=HYAutomation.BaseView"
+        mc:Ignorable="d"
+        Title="外观检测"  WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
+        WindowState="Maximized" Background="{StaticResource WindowBackgroundBrush}" SnapsToDevicePixels="True" FontSize ="18">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HYAutomation.BaseView;component/Themes/GeneralStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="fly" BeginTime="00:00:00" Duration="00:00:12">
+                <DoubleAnimation Storyboard.TargetName="product" BeginTime="00:00:00" Duration="00:00:02" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                <DoubleAnimation Storyboard.TargetName="product" BeginTime="00:00:00" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterX)" From="-300" To="0"/>
+                <DoubleAnimation Storyboard.TargetName="product" BeginTime="00:00:00" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterY)"  From="-300" To ="0"/>
+                <DoubleAnimation Storyboard.TargetName="product" BeginTime="00:00:00" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"  From="2" To ="1"/>
+                <DoubleAnimation Storyboard.TargetName="product" BeginTime="00:00:00" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" From="2" To ="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="productLog" BeginTime="00:00:02" Duration="00:00:02" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                <DoubleAnimation Storyboard.TargetName="productLog" BeginTime="00:00:02" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterX)" From="-300" To="0"/>
+                <DoubleAnimation Storyboard.TargetName="productLog" BeginTime="00:00:02" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterY)"  From="100" To ="0"/>
+                <DoubleAnimation Storyboard.TargetName="productLog" BeginTime="00:00:02" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"  From="2" To ="1"/>
+                <DoubleAnimation Storyboard.TargetName="productLog" BeginTime="00:00:02" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" From="2" To ="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="cameraImages" BeginTime="00:00:04" Duration="00:00:02" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                <DoubleAnimation Storyboard.TargetName="cameraImages" BeginTime="00:00:04" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"  From="2" To ="1"/>
+                <DoubleAnimation Storyboard.TargetName="cameraImages" BeginTime="00:00:04" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" From="2" To ="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="devices" BeginTime="00:00:06" Duration="00:00:02" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                <DoubleAnimation Storyboard.TargetName="devices" BeginTime="00:00:06" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterX)" From="300" To="0"/>
+                <DoubleAnimation Storyboard.TargetName="devices" BeginTime="00:00:06" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterY)"  From="-300" To ="0"/>
+                <DoubleAnimation Storyboard.TargetName="devices" BeginTime="00:00:06" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"  From="2" To ="1"/>
+                <DoubleAnimation Storyboard.TargetName="devices" BeginTime="00:00:06" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" From="2" To ="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="statistics" BeginTime="00:00:08" Duration="00:00:02" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                <DoubleAnimation Storyboard.TargetName="statistics" BeginTime="00:00:08" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterX)" From="300" To="0"/>
+                <DoubleAnimation Storyboard.TargetName="statistics" BeginTime="00:00:08" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterY)"  From="-50" To ="0"/>
+                <DoubleAnimation Storyboard.TargetName="statistics" BeginTime="00:00:08" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"  From="2" To ="1"/>
+                <DoubleAnimation Storyboard.TargetName="statistics" BeginTime="00:00:08" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" From="2" To ="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="runLog" BeginTime="00:00:10" Duration="00:00:02" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                <DoubleAnimation Storyboard.TargetName="runLog" BeginTime="00:00:10" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterX)" From="300" To="0"/>
+                <DoubleAnimation Storyboard.TargetName="runLog" BeginTime="00:00:10" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.CenterY)"  From="100" To ="0"/>
+                <DoubleAnimation Storyboard.TargetName="runLog" BeginTime="00:00:10" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"  From="2" To ="1"/>
+                <DoubleAnimation Storyboard.TargetName="runLog" BeginTime="00:00:10" Duration="00:00:02" Storyboard.TargetProperty ="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)" From="2" To ="1"/>
+            </Storyboard> 
+<!--<Style TargetType="{x:Type BaseControl:HYContentControl}" BasedOn="{StaticResource HYContentControl}">
+                <Setter Property="Opacity" Value="0"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <TransformGroup>
+                            <TranslateTransform/>
+                            <ScaleTransform/>
+                        </TransformGroup>
+                    </Setter.Value>
+                </Setter>
+            </Style>-->
+        </ResourceDictionary>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <Grid Width="1920" Height="1080">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid Background="{StaticResource WindowTitleBackgroundBrush}" MouseMove="Grid_top_MouseMove" >
+                <!--<Grid.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource fly}"/>
+                    </EventTrigger>
+                </Grid.Triggers>-->
+                <ContentPresenter Content="{Binding TitleAndIcon}" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <ItemsControl ItemsSource="{Binding TopMenu}" VerticalAlignment="Center" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding OpenCmd}" Style="{StaticResource FlatButton}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="lb" Content="{Binding ModuleTitle}" FontSize="22" Foreground="#CCC"  VerticalAlignment="Bottom" Margin="5 0" />
+                                        <Rectangle Width="1" StrokeThickness="0" Fill="#797979" Grid.Column="1"/>
+                                    </Grid>
+                                </Button>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="lb" Property="Foreground" Value="#efefef"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <ContentPresenter Content="{Binding TopWidgets}" VerticalAlignment="Center" />
+                    <Button Command="{Binding ResetCmd}" Style="{StaticResource ImgButton}" Content="{StaticResource Reset}" FontFamily="{StaticResource Iconfont}" Foreground="#efefef"  FontSize="30" Width="60" Height="60"  Margin="5 2"  ToolTip="复位" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <BaseControl:HYButton Command="{Binding MinCmd}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"  Style="{StaticResource HYButton}" FontFamily="{StaticResource Iconfont}" Content="{StaticResource Min}" FontSize="30" Padding="0 0 0 20" Width="60" Height="60" Foreground="#efefef" Background="Transparent" MouseOverBrush="SlateGray"  PressedBrush="CadetBlue" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <BaseControl:HYButton Command="{Binding NormalCmd}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"  Style="{StaticResource HYButton}" FontFamily="{StaticResource Iconfont}" Content="{StaticResource Normal}" FontSize="30" Width="60" Height="60" Foreground="#efefef" Background="Transparent" MouseOverBrush="SlateGray"  PressedBrush="CadetBlue" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <BaseControl:HYButton Command="{Binding ExitCmd}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"  Style="{StaticResource HYButton}" FontFamily="{StaticResource Iconfont}" Content="{StaticResource Exit}" FontSize="30" Width="60" Height="60" Foreground="#efefef" Background="Transparent" MouseOverBrush="DarkRed"  PressedBrush="Red" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Rectangle VerticalAlignment="Bottom" Height="1" Fill="{StaticResource WindowTitleSpliterBrush}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".8*"/>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <BaseControl:HYContentControl x:Name="product" TitleContent="当前产品" DataContext="{Binding CurrentProduct}" Content="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.ProductUserControl}"/>
+                        <BaseControl:HYContentControl x:Name="productLog" Grid.Row="1" TitleContent="生产记录" DataContext="{Binding ProductLogs}" Content="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.ProductLogUserControl}"/>
+                    </Grid>
+                    <BaseControl:HYContentControl x:Name="cameraImages" Grid.Column="1" DataContext="{Binding CurrentProduct}" TitleContent="图片信息" Content="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.CameraImageUserControl}"/>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1.8*"/>
+                            <RowDefinition Height="2.2*"/>
+                        </Grid.RowDefinitions>
+                        <BaseControl:HYContentControl x:Name="devices" TitleContent="设备状态" DataContext="{Binding WorkDevices}" Content="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.DevicesUserControl}" />
+                    <BaseControl:HYContentControl x:Name="statistics" Grid.Row="1" TitleContent="今日统计" DataContext="{Binding DetectItemStatistics}" Content="{Binding RelativeSource={RelativeSource  AncestorType=Window},Path=DataContext.StatisticsUserControl}"/>
+                    <BaseControl:HYContentControl x:Name="runLog" Grid.Row="2" TitleContent="运行日志" DataContext="{Binding SysLogs}" Content="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.RunLogUserControl}"/>
+                    </Grid>
+                </Grid>
+            <Grid Grid.Row="2" Background="{StaticResource WindowTitleBackgroundBrush}">
+                <Rectangle VerticalAlignment="Top" Height="1" Fill="{StaticResource WindowTitleSpliterBrush}"/>
+                <ContentPresenter Content="{Binding Footer}"/>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

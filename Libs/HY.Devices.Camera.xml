@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HY.Devices.Camera</name>
+    </assembly>
+    <members>
+        <member name="T:HY.Devices.Camera.AbstractHYCamera_Basler">
+            <summary>
+            Basler相机
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.AbstractHYCamera_Dalsa">
+            <summary>
+            DALSA相机
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_Dalsa.#ctor(System.String,System.Int32)">
+            <summary>
+            实例化相机
+            </summary>
+            <param name="_SerialNum">相机序列号</param>
+        </member>
+        <member name="T:HY.Devices.Camera.AbstractHYCamera_HIK">
+            <summary>
+            海康相机
+            </summary>
+        </member>
+        <member name="F:HY.Devices.Camera.AbstractHYCamera_HIK.m_pDeviceList">
+            <summary>
+            设备列表
+            </summary>
+        </member>
+        <member name="F:HY.Devices.Camera.AbstractHYCamera_HIK.m_pDevice">
+            <summary>
+            当前设备
+            </summary>
+        </member>
+        <member name="F:HY.Devices.Camera.AbstractHYCamera_HIK.m_pMyCamera">
+            <summary>
+            相机
+            </summary>
+        </member>
+        <member name="F:HY.Devices.Camera.AbstractHYCamera_HIK.m_nBufSizeForDriver">
+            <summary>
+            图片地址
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.AbstractHYCamera_HIK.CameraType">
+            <summary>
+            相机类型
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_HIK.SaveImage(System.String)">
+            <summary>
+            暂时只支持jpg和bmp格式
+            </summary>
+            <param name="savePath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HY.Devices.Camera.AbstractHYCamera_IKap">
+            <summary>
+            埃科相机
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.AbstractHYCamera_IKap_Net.CameraType">
+            <summary>
+            相机类型
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_IKap_Net.SetTriggerParameters(HY.Devices.Camera.TriggerSelector,HY.Devices.Camera.TriggerMode,System.String)">
+            <summary>
+            设置触发参数
+            </summary>
+            <param name="selector">线触发，帧触发</param>
+            <param name="mode">触发开关</param>
+            <param name="triggerSource">触发源  线 line1,帧line3</param>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_IKap_Net.removalCallbackProc(System.IntPtr,System.IntPtr)">
+            <summary>
+            掉线
+            </summary>
+            <param name="context"></param>
+            <param name="eventInfo"></param>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_IKap_Net.InitEnvironment">
+            <summary>
+            初始化运行环境
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_IKap_Net.ConfigureCamera(System.UInt32)">
+            <summary>
+            配置相机
+            </summary>
+            <param name="cameraIndex"></param>
+        </member>
+        <member name="M:HY.Devices.Camera.AbstractHYCamera_IKap_Net.RegisterCallBack">
+            <summary>
+            注册回调函数
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.HYCamera_HIKLinear">
+            <summary>
+            海康线阵相机
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.HYCamera_HIKArea">
+            <summary>
+            海康面阵相机
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.IHYCamera">
+            <summary>
+            相机模块
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.IHYCamera.CameraType">
+            <summary>
+            相机类型
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.IHYCamera.CameraIndex">
+            <summary>
+            相机索引
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.IHYCamera.CameraName">
+            <summary>
+            相机名字
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.IHYCamera.IsConnected">
+            <summary>
+            是否在线
+            </summary>
+        </member>
+        <member name="P:HY.Devices.Camera.IHYCamera.IsGrabbing">
+            <summary>
+            是否在采集
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetImageWidth(System.UInt32@)">
+            <summary>
+            获取当前宽度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetImageWidth(System.UInt32)">
+            <summary>
+            设置宽度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetImageHeight(System.UInt32@)">
+            <summary>
+            获取当前高度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetImageHeight(System.UInt32)">
+            <summary>
+            设置高度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetExposureTime(System.Double@)">
+            <summary>
+            获取当前曝光时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetExposureTime(System.Double)">
+            <summary>
+            设置曝光时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetAutoExposure(HY.Devices.Camera.AutoMode)">
+            <summary>
+            设置自动曝光
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetGain(System.Double@)">
+            <summary>
+            获取当前增益
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetGain(System.Double)">
+            <summary>
+            设置增益
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetAutoGain(HY.Devices.Camera.AutoMode)">
+            <summary>
+            设置自动增益
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetFrameRate(System.Double@)">
+            <summary>
+            获取当前帧率
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetFrameRate(System.Double)">
+            <summary>
+            设置帧率
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetTriggerModel(HY.Devices.Camera.TriggerMode@)">
+            <summary>
+            触发模式是否打开
+            </summary>
+            <returns>true 打开 false 关闭</returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetTriggerModel(HY.Devices.Camera.TriggerMode)">
+            <summary>
+            设置触发模式打开或关闭
+            </summary>
+            <param name="isOpen">true 打开 false 关闭</param>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GetTriggerSource(HY.Devices.Camera.TriggerSources@)">
+            <summary>
+            获取当前触发源，触发模式打开有效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SetTriggerSource(HY.Devices.Camera.TriggerSources)">
+            <summary>
+            设置触发源,触发模式打开有效
+            </summary>
+            <param name="triggerSources"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.Open">
+            <summary>
+            打开相机
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SoftWareTrigger">
+            <summary>
+            软触发一次,只有触发模式打开并且设置为软触发，才生效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.GrabOne(System.Drawing.Bitmap@)">
+            <summary>
+            抓拍一帧图片
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.ContinousGrab">
+            <summary>
+            连续采集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.StopGrab">
+            <summary>
+            停止采集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.SaveImage(System.String)">
+            <summary>
+            保存图片
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.IHYCamera.Close">
+            <summary>
+            关闭相机`
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:HY.Devices.Camera.IHYCamera.NewImageEvent">
+            <summary>
+            新图片
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.CameraTypes">
+            <summary>
+            相机类型
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.TriggerMode">
+            <summary>
+            触发模式
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.AutoMode">
+            <summary>
+            自动模式
+            </summary>
+        </member>
+        <member name="T:HY.Devices.Camera.TriggerSources">
+            <summary>
+            触发源
+            </summary>
+        </member>
+        <member name="F:HY.Devices.Camera.TriggerSources.HardWare">
+            <summary>
+            硬触发
+            </summary>
+        </member>
+        <member name="F:HY.Devices.Camera.TriggerSources.Soft">
+            <summary>
+            软触发
+            </summary>
+        </member>
+        <member name="M:HY.Devices.Camera.Utils.SerialPortHelper.ReadData(System.String,System.Int32)">
+            <summary>
+            获取串口数据
+            </summary>
+            <param name="strData"></param>
+            <param name="nTimeOut"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

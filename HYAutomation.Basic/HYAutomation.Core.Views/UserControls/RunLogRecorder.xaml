@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="HYAutomation.Core.Views.UserControls.RunLogRecorder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HYAutomation.Core.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ListBox ItemsSource="{Binding}" BorderThickness="0" Margin="2" Background="Transparent"  ScrollViewer.VerticalScrollBarVisibility="Auto"  FontSize="20" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.IsVirtualizing="True">
+        <ListBox.Resources>
+            <Style TargetType="ListBoxItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text="{Binding Time,StringFormat={}{0:yyyy-MM-dd HH:mm:ss.fff}}" Foreground="#efefef" FontSize="20"/>
+                                <TextBox IsReadOnly="True" Text="{Binding Msg}" Width="{TemplateBinding Width}" TextWrapping="Wrap"  Background="Transparent" BorderThickness="0">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Foreground" Value="#efefef"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsError}" Value="True">
+                                                    <Setter Property="Foreground" Value="Red"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListBox.Resources>
+    </ListBox>
+</UserControl>

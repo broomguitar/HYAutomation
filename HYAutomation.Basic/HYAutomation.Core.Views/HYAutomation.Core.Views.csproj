@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11E4CF03-904C-44FC-ADA9-11353B44E28C}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>HYAutomation.Core.Views</RootNamespace>
+    <AssemblyName>HYAutomation.Core.Views</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HYCommonUtils.EnvironmentUtils">
+      <HintPath>..\..\Libs\HYCommonUtils.EnvironmentUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="HYCommonUtils.SerializationUtils">
+      <HintPath>..\..\Libs\HYCommonUtils.SerializationUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="HYWindowUtils.WPF.CommonUtils">
+      <HintPath>..\..\Libs\HYWindowUtils.WPF.CommonUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="HYWindowUtils.WPF.UserControls">
+      <HintPath>..\..\Libs\HYWindowUtils.WPF.UserControls.dll</HintPath>
+    </Reference>
+    <Reference Include="HYWindowUtils.WPF.VMBaseUtil">
+      <HintPath>..\..\Libs\HYWindowUtils.WPF.VMBaseUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\DetectItemModelExtensions.cs" />
+    <Compile Include="Globals\GlobalAction.cs" />
+    <Compile Include="Globals\GlobalConfig.cs" />
+    <Compile Include="Globals\GlobalManager.cs" />
+    <Compile Include="BaseProductRecordView.xaml.cs">
+      <DependentUpon>BaseProductRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseProductTypeView.xaml.cs">
+      <DependentUpon>BaseProductTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResultDetailView.xaml.cs">
+      <DependentUpon>ResultDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectDetectItemTypeView.xaml.cs">
+      <DependentUpon>SelectDetectItemTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SetDetectItemUtilsView.xaml.cs">
+      <DependentUpon>SetDetectItemUtilsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CameraImageView.xaml.cs">
+      <DependentUpon>CameraImageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DetectItemManageControl.xaml.cs">
+      <DependentUpon>DetectItemManageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DevicesStatus.xaml.cs">
+      <DependentUpon>DevicesStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FooterContent.xaml.cs">
+      <DependentUpon>FooterContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageViewer.xaml.cs">
+      <DependentUpon>ImageViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ProducRecordList.xaml.cs">
+      <DependentUpon>ProducRecordList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ProductBaseInfo.xaml.cs">
+      <DependentUpon>ProductBaseInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RunLogRecorder.xaml.cs">
+      <DependentUpon>RunLogRecorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Statistics.xaml.cs">
+      <DependentUpon>Statistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatisticsCharts\ColumnChart.xaml.cs">
+      <DependentUpon>ColumnChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatisticsCharts\LineChart.xaml.cs">
+      <DependentUpon>LineChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatisticsCharts\PieChart.xaml.cs">
+      <DependentUpon>PieChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatisticsView.xaml.cs">
+      <DependentUpon>StatisticsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TitleAndIcon.xaml.cs">
+      <DependentUpon>TitleAndIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DepthClone.cs" />
+    <Compile Include="Utils\ExportToExcel.cs" />
+    <Compile Include="Utils\ResourceHelper.cs" />
+    <Compile Include="Utils\UploadToServer.cs" />
+    <Compile Include="Utils\WriteableBitmapUtils.cs" />
+    <Compile Include="ValueConverters\FileToImageConverter.cs" />
+    <Compile Include="ValueConverters\ProductTypeDetailsToImageConverter.cs" />
+    <Compile Include="ViewModels\BaseMainViewModel.cs" />
+    <Compile Include="ViewModels\BaseProductRecordViewModel.cs" />
+    <Compile Include="ViewModels\BaseProductTypeViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\CameraResultModel.cs" />
+    <Compile Include="Models\ProductInfoModel.cs" />
+    <Compile Include="Models\ProductStatisticsModel.cs" />
+    <Compile Include="Models\ProductTypeModel.cs" />
+    <Compile Include="Models\StatisticsChartModel.cs" />
+    <Compile Include="Modules\ProductRecordModule.cs" />
+    <Compile Include="Modules\ProductStatisticsModule.cs" />
+    <Compile Include="Modules\ProductTypeModule.cs" />
+    <Compile Include="Modules\SolutionConfigModule.cs" />
+    <Compile Include="Modules\SysSettingModule.cs" />
+    <Compile Include="Modules\UserManagementModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <Content Include="fuzzyCharacters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fuzzyColors.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HYAutomation.Entities\00,HYAutomation.Entity_Base\00,HYAutomation.Entity_Base.csproj">
+      <Project>{076eb5d6-5a7f-4df8-a64f-9c58923c3f68}</Project>
+      <Name>00,HYAutomation.Entity_Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HYAutomation.BaseView\HYAutomation.BaseView.csproj">
+      <Project>{EB2A7B5D-49C4-4AB5-9C80-2167638AA85D}</Project>
+      <Name>HYAutomation.BaseView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HYAutomation.BLL\HYAutomation.BLL.csproj">
+      <Project>{4e3bb1a4-83b8-482e-aba7-94a3b25c23c0}</Project>
+      <Name>HYAutomation.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HYAutomation.Core.Algorithm\HYAutomation.Core.Algorithm.csproj">
+      <Project>{63FEFE3C-0A1C-45CE-8100-CE84903CE6C9}</Project>
+      <Name>HYAutomation.Core.Algorithm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HYAutomation.Core\HYAutomation.Core.csproj">
+      <Project>{6BBB2282-1B5F-4EDF-9272-96CC2521023F}</Project>
+      <Name>HYAutomation.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HYAutomation.Device\HYAutomation.Device.csproj">
+      <Project>{0EB9C1B0-0FC6-44CB-9CF3-E4EB7974E9C5}</Project>
+      <Name>HYAutomation.Device</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HYAutomation.Module\HYAutomation.Module.csproj">
+      <Project>{23D8D9A3-C610-46F2-A924-41CE84D0A2EB}</Project>
+      <Name>HYAutomation.Module</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="BaseProductRecordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BaseProductTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResultDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SelectDetectItemTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SetDetectItemUtilsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CameraImageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DetectItemManageControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DevicesStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FooterContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ImageViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ProducRecordList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ProductBaseInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RunLogRecorder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\StatisticsCharts\ColumnChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StatisticsCharts\LineChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StatisticsCharts\PieChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StatisticsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TitleAndIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
